@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   const [messages, setMessages] = useState([["Credit @import-hardik","86:56 am","editor"]]);
   const wsRef = useRef();
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement | null>(null);
   let where="flex w-full mt-2 space-x-3 max-w-xs"
 
   useEffect(() => {
@@ -12,6 +12,7 @@ function App() {
     ws.onmessage = (event) => {
       setMessages(m => [...m, [JSON.parse(event.data).payload.message,JSON.parse(event.data).payload.time,JSON.parse(event.data).payload.browserID]])
     }
+    // @ts-ignore
     wsRef.current = ws;
     // name gernate
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -56,9 +57,11 @@ function App() {
       </div>
       </div>
       <div className='w-full bg-white flex'>
+        // @ts-ignore
         <input ref={inputRef} id="message" className="flex-1 p-4"></input>
         <button onClick={() => {
           const message = inputRef.current?.value;
+          // @ts-ignore
           document.getElementById("message").value="";
           // time const start
           const now = new Date();
@@ -67,6 +70,7 @@ function App() {
           const ampm = hours >= 12 ? 'PM' : 'AM';
           hours = hours % 12 || 12;
           // time const end
+        // @ts-ignore
           wsRef.current.send(JSON.stringify({
             type: "chat",
             payload: {
