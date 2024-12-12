@@ -5,7 +5,6 @@ function App() {
   const [messages, setMessages] = useState([["Credit @import-hardik","86:56 am","editor"]]);
   const wsRef = useRef();
   const inputRef = useRef<HTMLInputElement | null>(null);
-  let where="flex w-full mt-2 space-x-3 max-w-xs"
 
   useEffect(() => {
     const ws = new WebSocket("https://3216153f-5c1a-4c1f-9bef-5af34de29250-00-10grjulav6pj4.sisko.replit.dev/");
