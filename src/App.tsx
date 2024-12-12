@@ -56,7 +56,6 @@ function App() {
       </div>
       </div>
       <div className='w-full bg-white flex'>
-        // @ts-ignore
         <input ref={inputRef} id="message" className="flex-1 p-4"></input>
         <button onClick={() => {
           const message = inputRef.current?.value;
