@@ -7,7 +7,7 @@ function App() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("https://3216153f-5c1a-4c1f-9bef-5af34de29250-00-10grjulav6pj4.sisko.replit.dev/");
+    const ws = new WebSocket("https://451413f5-3145-42e0-8877-1c9d627d9481-00-3jdquaqssmz2y.pike.replit.dev:8080/");
     ws.onmessage = (event) => {
       setMessages(m => [...m, [JSON.parse(event.data).payload.message,JSON.parse(event.data).payload.time,JSON.parse(event.data).payload.browserID]])
     }
